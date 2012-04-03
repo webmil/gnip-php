@@ -34,6 +34,7 @@ class FacebookParser extends AbsctractParser
         if($ns_activity->object->children('gnip', true) && $ns_activity->object->children('gnip', true)->statistics->attributes()){
             $rez['object']['favoriteCount'] = (string)$ns_activity->object->children('gnip', true)->statistics->attributes()->favoriteCount;
         }
+        $rez['object']['object-type'] = (string)$ns_activity->object->children('activity',true)->{'object-type'};
         $rez['object']['id'] = (string)$object->id;
         $rez['object']['title'] = (string)$object->title;
         $rez['object']['content'] = (string)$object->content;
