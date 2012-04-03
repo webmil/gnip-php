@@ -1,0 +1,42 @@
+== Gnip-php class
+
+PHP5 class for gnip.com API
+
+Dependencies:
+  PHP 5.3 or newer
+  php_curl
+  simplexml
+
+== Examles
+
+Create configuration:
+
+  $config = new Configuration\BaseConfiguration($params);
+
+Create rules manager:
+
+  $rulesManager = new Rules\RulesManager($config);
+
+Get active rules from gnip:
+
+  $rulesManager->getRules('google');
+
+Add rules to gnip:
+
+  $rulesManager->add('test');
+  $rulesManager->add(array('tes2','test3'));
+  $rulesManager->commit();
+
+Remove rule from gnip:
+
+  $rulesManager->add('tes2')->doRemoveRequest()->commit();
+
+Load feed from gnip:
+
+  $loader = new Collectors\Loader($config);
+  $feed = $loader->getFeed('google');
+
+Parse gnip feed:
+
+  $parser = new Parsers\Parser();
+  $parser->parse($feed, 'google');
