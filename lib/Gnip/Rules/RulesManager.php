@@ -189,7 +189,7 @@ class RulesManager
             $urls = $this->_config->getRulesUrlsArray();
             foreach ($urls as $snName => $url) {
                 try {
-                    $this->_doRequest($url);
+                    $this->_doRequest($url, true);
                     $results[$snName] = true;
                 } catch (Exception\GnipNetworkException $e) {
                     $results[$snName] = false;
@@ -201,7 +201,7 @@ class RulesManager
         //if url is set, do request for one chanel
         else {
             try {
-                $this->_doRequest($this->_chanelUrl);
+                $this->_doRequest($this->_chanelUrl, true);
             } catch (Exception\GnipNetworkException $e) {
                 $results = false;
                 $error = true;
